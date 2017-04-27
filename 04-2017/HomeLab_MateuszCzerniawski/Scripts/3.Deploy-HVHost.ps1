@@ -1,5 +1,5 @@
 ﻿$HVCreds = Get-Credential
-$ConfigurationFile = Get-Content 'C:\Repos\GIT\PPoSH prezentacja\Prepare\Arcon-HV1\Arcon-HV1.Configuration.json' -raw | ConvertFrom-Json 
+$ConfigurationFile = Get-Content '.\Arcon-HV1\Arcon-HV1.Configuration.json' -raw | ConvertFrom-Json 
 $ComputerName = $ConfigurationFile.ComputerName
 
 #region configure NIC Advanced Properties
@@ -149,11 +149,11 @@ Invoke-command -ComputerName $ComputerName -Credential $HVCreds -ScriptBlock {
 Invoke-command -ComputerName $ComputerName -Credential $HVCreds -ScriptBlock {
   $HyperVConfig = $USING:ConfigurationFile.HyperVConfig
   New-Item -Path $HyperVConfig.VMs -ItemType Directory
-  Set-VMHost -VirtualHardDiskPath $Folders.VMs -VirtualMachinePath $Folders.VMs
+  Set-VMHost -VirtualHardDiskPath $HyperVConfig.VMs -VirtualMachinePath $HyperVConfig.VMs
   
   foreach ($folder in $HyperVConfig.Folders) {}
-  New-Item -Path $Folder -ItemType Directory
-  New-Item -Path $Folder -ItemType Directory
+  New-Item -Path $Folder -ItemType Directory -force
+  
 }
 #endregion
 
