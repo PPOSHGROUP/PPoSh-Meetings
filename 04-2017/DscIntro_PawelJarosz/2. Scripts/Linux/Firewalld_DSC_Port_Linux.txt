@@ -1,0 +1,4 @@
+#Linux commands before connecting
+firewall-cmd --permanent --zone=work --add-port=5986/tcp
+firewall-cmd --set-default-zone=work
+firewall-cmd --reload
