@@ -243,4 +243,4 @@ VERBOSE: Time taken for configuration job to complete is 1.269 seconds
 
 ```
 
-Now you should wait and appropriate permissions should get applied to the windows client.
+Now you should wait and appropriate configuration should get applied to the windows client.
